@@ -14,6 +14,12 @@ using namespace std;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) (int)(x).size()
 
+/*
+Source: 1971D Codeforces
+Difficulty: 1000 (CF)
+Tag: DP
+*/
+
 void solve() {
 	string s;
 	cin >> s;
@@ -34,11 +40,14 @@ void solve() {
 			blocks++;
 		}
 
+		// we need to count '01' as 1 cuz it's like a transition between 000 and 111 blocks
 		if (s[i] == '1' && s[i - 1] == '0') {
 			found = true;
 		}
 	}
 
+	// so if we found '01' we need to dicrease 1 time because basically algorithm counts all subsequents
+	// and it will count 01 as 2, but due to problem we need to count it as 1
 	if (found) {
 		cout << --blocks << endl;
 		return;
